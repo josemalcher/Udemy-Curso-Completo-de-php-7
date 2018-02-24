@@ -69,6 +69,73 @@ Curso de controle de versão com Git - http://dev.rbtech.info/curso-controle-ver
 
 ## <a name="parte3">03 Conhecendo a Linguagem PHP</a>
 
+#### Básico 
+
+- http://php.net/manual/pt_BR/language.variables.basics.php
+```php
+<?php
+$var = 'Bob';
+$Var = 'Joe';
+echo "$var, $Var";      // exibe "Bob, Joe"
+
+$4site = 'not yet';     // inválido; começa com um número
+$_4site = 'not yet';    // válido; começa com um sublinhado
+$täyte = 'mansikka';    // válido; 'ä' é um caracter ASCII (extendido) 228
+?>
+```
+
+- https://secure.php.net/manual/pt_BR/language.types.php
+
+- http://php.net/manual/pt_BR/reserved.variables.php
+
+Superglobais — Superglobais são variáveis nativas que estão sempre disponíveis em todos escopos  
+$GLOBALS — Referencia todas variáveis disponíveis no escopo global  
+$_SERVER — Informação do servidor e ambiente de execução  
+$_GET — HTTP GET variáveis  
+$_POST — HTTP POST variables  
+$_FILES — HTTP File Upload variáveis  
+$_REQUEST — Variáveis de requisição HTTP  
+$_SESSION — Variáveis de sessão  
+$_ENV — Environment variables  
+$_COOKIE — HTTP Cookies  
+$php_errormsg — A mensagem de erro anterior  
+$HTTP_RAW_POST_DATA — Informação não-tratada do POST  
+$http_response_header — Cabeçalhos de resposta HTTP  
+$argc — O número de argumentos passados para o script  
+$argv — Array de argumentos passados para o script  
+
+- http://php.net/manual/pt_BR/language.variables.scope.php
+
+```php
+<?php
+$a = 1; /* escopo global */
+
+function Teste()
+{
+    echo $a; /* referencia uma variável do escopo local (não definida) */
+}
+
+Teste();
+?>
+```
+
+- http://php.net/manual/pt_BR/language.operators.php
+
+- http://php.net/manual/pt_BR/ref.strings.php
+
+printf — Mostra uma string formatada
+
+str_split — Converte uma string para um array
+strlen — Retorna o tamanho de uma string
+strpos — Encontra a posição da primeira ocorrência de uma string
+strrchr — Encontra a ultima ocorrência de um caractere em uma string
+substr_count — Conta o número de ocorrências de uma substring
+substr_replace — Substitui o texto dentro de uma parte de uma string
+substr — Retorna uma parte de uma string
+trim — Retira espaço no ínicio e final de uma string
+
+http://php.net/manual/pt_BR/function.include.php
+
 
 [Voltar ao Índice](#indice)
 
