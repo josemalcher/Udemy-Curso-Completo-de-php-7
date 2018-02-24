@@ -39,12 +39,28 @@ https://josemalcher.net/kanban/public/task/251/c1b8680b9e2b4305daf46fb0f202491ea
 
 ## <a name="parte1">01 Introdução ao PHP</a>
 
+- http://www.php.net/
+
+- História: https://pt.wikipedia.org/wiki/PHP
+
+- mundo das funções PHP: http://micmap.org/php-by-example/pt
+
+- Servidor: https://sourceforge.net/projects/xampp/files/
+
+- https://code.visualstudio.com/
+
+- https://pt.wikipedia.org/wiki/Cliente-servidor
+
+
 
 [Voltar ao Índice](#indice)
 
 ---
 
 ## <a name="parte2">02 Entendendo Controle de versão</a>
+
+Curso de controle de versão com Git - http://dev.rbtech.info/curso-controle-versao-git-aula-1/
+
 
 
 [Voltar ao Índice](#indice)
