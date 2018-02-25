@@ -143,6 +143,135 @@ http://php.net/manual/pt_BR/function.include.php
 
 ## <a name="parte4">04 Estruturas de Controle e Laços de repetição</a>
 
+- http://php.net/manual/pt_BR/control-structures.if.php
+- https://secure.php.net/manual/pt_BR/control-structures.elseif.php
+
+```php
+<?php
+
+/* Incorrect Method: */
+if($a > $b):
+    echo $a." is greater than ".$b;
+else if($a == $b): // Will not compile.
+    echo "The above line causes a parse error.";
+endif;
+
+
+/* Correct Method: */
+if($a > $b):
+    echo $a." is greater than ".$b;
+elseif($a == $b): // Note the combination of the words.
+    echo $a." equals ".$b;
+else:
+    echo $a." is neither greater than or equal to ".$b;
+endif;
+
+?>
+```
+
+- http://php.net/manual/pt_BR/control-structures.switch.php
+
+```php
+<?php
+switch ($i):
+    case 0:
+        echo "i equals 0";
+        break;
+    case 1:
+        echo "i equals 1";
+        break;
+    case 2:
+        echo "i equals 2";
+        break;
+    default:
+        echo "i is not equal to 0, 1 or 2";
+endswitch;
+?>
+```
+
+- https://secure.php.net/manual/pt_BR/control-structures.for.php
+
+```php
+<?php
+/* exemplo 1 */
+
+for ($i = 1; $i <= 10; $i++) {
+    echo $i;
+}
+
+/* exemplo 2 2 */
+
+for ($i = 1; ; $i++) {
+    if ($i > 10) {
+        break;
+    }
+    echo $i;
+}
+
+/* exemplo 3 */
+
+$i = 1;
+for (; ; ) {
+    if ($i > 10) {
+        break;
+    }
+    echo $i;
+    $i++;
+}
+
+/* exemplo 4 */
+
+for ($i = 1, $j = 0; $i <= 10; $j += $i, print $i, $i++);
+?>
+```
+
+- http://php.net/manual/pt_BR/control-structures.foreach.php
+
+foreach (array_expression as $key => $value)
+
+```php
+<?php
+$arr = array(1, 2, 3, 4);
+foreach ($arr as &$value) {
+    $value = $value * 2;
+}
+```
+
+- http://php.net/manual/pt_BR/control-structures.while.php
+
+```php
+<?php
+/* example 1 */
+
+$i = 1;
+while ($i <= 10) {
+    echo $i++;  /* the printed value would be
+                   $i before the increment
+                   (post-increment) */
+}
+
+/* example 2 */
+
+$i = 1;
+while ($i <= 10):
+    echo $i;
+    $i++;
+endwhile;
+?>
+```
+
+- http://php.net/manual/pt_BR/control-structures.do.while.php
+
+```php
+<?php
+$i = 0;
+do {
+    echo $i;
+} while ($i > 0);
+?>
+```
+
+
 
 [Voltar ao Índice](#indice)
 
