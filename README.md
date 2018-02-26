@@ -350,14 +350,85 @@ echo ANIMALS[1]; // imprime "cat"
 - https://secure.php.net/manual/pt_BR/reserved.constants.php
 
 
-
-
-
 [Voltar ao Índice](#indice)
 
 ---
 
 ## <a name="parte6">06 Sessão no PHP 7</a>
+
+- http://php.net/manual/pt_BR/reserved.variables.session.php
+
+
+```php
+<?php
+
+session_start();
+
+$_SESSION['nome'] = 'Hcode'; // cria uma variável
+```
+
+```php
+<?php
+
+require_once("config.php"); //exemplo
+
+session_start();
+
+//session_unset($_SESSION['name']); //
+session_destroy(); // limpa e remove
+
+echo $_SESSION['nome'];
+
+
+```
+
+- https://secure.php.net/manual/pt_BR/session.idpassing.php
+
+```php
+
+//<?php
+  
+  require_once ("config.php");
+  
+  echo session_id();
+  
+  // qul7ol54iioorahbbdn800mrl0
+  
+```
+
+```php
+<?php
+
+require_once ("config.php");
+
+session_regenerate_id(); //gera id a cada refresh
+
+echo session_id();
+```
+
+```php
+<?php
+
+session_start();
+
+if (empty($_SESSION['count'])) {
+    $_SESSION['count'] = 1;
+} else {
+    $_SESSION['count']++;
+}
+?>
+
+<p>
+    Olá visitante, você acessou esta página <?php echo $_SESSION['count']; ?> vezes.
+</p>
+
+<p>
+    Para continuar, <a href="nextpage.php?<?php echo htmlspecialchars(SID); ?>">clique
+        aqui</a>.
+</p>
+```
+
+
 
 
 [Voltar ao Índice](#indice)
