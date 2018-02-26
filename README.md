@@ -279,6 +279,79 @@ do {
 
 ## <a name="parte5">05 Arrays em PHP</a>
 
+- https://secure.php.net/manual/pt_BR/language.types.array.php
+
+```php
+<?php
+$array = array("foo", "bar", "hello", "world");
+var_dump($array);
+?>
+```
+
+- http://php.net/manual/pt_BR/function.json-encode.php
+
+```php
+<?php
+$arr = array('a' => 1, 'b' => 2, 'c' => 3, 'd' => 4, 'e' => 5);
+
+echo json_encode($arr);
+?>
+
+// {"a":1,"b":2,"c":3,"d":4,"e":5}
+```
+
+- http://php.net/manual/pt_BR/language.constants.php
+
+```php
+<?php
+
+// Nomes de constantes válidos
+define("FOO",     "alguma coisa");
+define("FOO2",    "alguma outra coisa");
+define("FOO_BAR", "alguma coisa mais");
+
+// Nomes de constantes inválidas
+define("2FOO",    "alguma coisa");
+
+// Isto é válido, mas deve ser evitado:
+// O PHP pode vir a fornercer uma constante mágica
+// que danificará seu script
+define("__FOO__", "alguma coisa");
+
+?>
+```
+
+- https://secure.php.net/manual/pt_BR/language.constants.syntax.php
+
+```php
+<?php
+// Funciona a partir do PHP 5.3.0
+const CONSTANT = 'Hello World';
+
+echo CONSTANT;
+
+// Funciona a partir do PHP 5.6.0
+const ANOTHER_CONST = CONSTANT.'; Goodbye World';
+echo ANOTHER_CONST;
+
+const ANIMALS = array('dog', 'cat', 'bird');
+echo ANIMALS[1]; // imprime "cat"
+
+// A partir do PHP 7
+define('ANIMALS', array(
+    'dog',
+    'cat',
+    'bird'
+));
+echo ANIMALS[1]; // imprime "cat"
+?>
+```
+
+- https://secure.php.net/manual/pt_BR/reserved.constants.php
+
+
+
+
 
 [Voltar ao Índice](#indice)
 
