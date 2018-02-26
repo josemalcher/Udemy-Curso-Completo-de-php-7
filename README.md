@@ -428,7 +428,31 @@ if (empty($_SESSION['count'])) {
 </p>
 ```
 
+- http://php.net/manual/pt_BR/function.session-status.php
 
+```php
+<?php
+
+require_once ("config.php");
+
+echo session_save_path();
+
+echo "<br>";
+
+switch (session_status()){
+    case PHP_SESSION_DISABLED:
+        echo " as sessões estiverem desabilitadas.";
+    break;
+
+    case PHP_SESSION_NONE :
+        echo "as sessões estiverem habilitadas, mas nenhuma existir.";
+        break;
+
+    case PHP_SESSION_ACTIVE:
+        echo "as sessões estiverem habilitadas, e uma existir.";
+        break;
+}
+```
 
 
 [Voltar ao Índice](#indice)
