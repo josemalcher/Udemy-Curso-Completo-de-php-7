@@ -461,6 +461,62 @@ switch (session_status()){
 
 ## <a name="parte7">07 Trabalhando com Funções em PHP</a>
 
+- https://secure.php.net/manual/pt_BR/functions.user-defined.php
+
+```php
+<?php
+
+function ola(){
+    return "Olá mundo<br>";
+}
+
+echo ola();
+
+$frase = ola();
+
+echo strlen($frase);
+```
+
+```php
+<?php
+ function salario(){
+     return 2008.90;
+ }
+
+ echo "Recebi R$ " . (salario());
+```
+
+- https://secure.php.net/manual/pt_BR/functions.arguments.php
+
+```php
+<?php
+
+function ola($nome = "Mundo", $periodo = "Bom dia"){
+    return "Olá $nome, $periodo <br>";
+
+}
+echo ola();
+echo ola("");
+echo ola("José");
+echo ola("Silva", "Boa noite");
+
+```
+
+```php
+<?php
+
+function ola(){
+    $argumentos = func_get_args();
+    return $argumentos;
+}
+
+var_dump(ola("Bom dia", 10));
+```
+
+
+
+
+
 
 [Voltar ao Índice](#indice)
 
