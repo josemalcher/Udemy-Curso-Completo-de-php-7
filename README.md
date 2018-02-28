@@ -661,6 +661,58 @@ $fn("OLá");
 
 ## <a name="parte8">08 Trabalhando com Data e Hora no PHP</a>
 
+### 037 Função date e a Função Time
+
+- http://php.net/manual/pt_BR/function.date.php
+
+```php
+<?php
+echo date("d/m/Y H:i:s");
+echo "<br>";
+echo time();
+```
+
+```php
+<?php
+
+$ts = strtotime('1984-08-12');
+//$ts = strtotime("now");
+//$ts = strtotime("+1 day");
+//$ts = strtotime("+1 week");
+echo $ts;
+echo "<br>";
+echo date("1, d/m/Y", $ts);
+
+```
+
+### 038 Definindo a configuração regional com setlocale
+
+- https://secure.php.net/manual/pt_BR/function.strftime.php
+- https://pt.stackoverflow.com/questions/8317/como-fazer-a-fun%C3%A7%C3%A3o-date-formatar-uma-data-em-portugu%C3%AAs
+
+```php
+<?php
+setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
+
+echo strftime('%A, %d de %B de %Y', strtotime('today'));
+```
+
+### 039 Classe DateTime
+
+- http://php.net/manual/pt_BR/class.datetime.php
+
+```php
+<?php
+$dt = new DateTime();
+
+echo $dt->format("d/m/Y H:i:s");
+echo "<br>";
+
+$periodo = new DateInterval("P15D"); // + 15 DIAs
+$dt->add($periodo);
+echo $dt->format("d/m/Y H:i:s");
+```
+
 
 [Voltar ao Índice](#indice)
 
