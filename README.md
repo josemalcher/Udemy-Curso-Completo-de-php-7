@@ -461,6 +461,8 @@ switch (session_status()){
 
 ## <a name="parte7">07 Trabalhando com Funções em PHP</a>
 
+### 031 Criando Funções de Usuário
+
 - https://secure.php.net/manual/pt_BR/functions.user-defined.php
 
 ```php
@@ -485,6 +487,8 @@ echo strlen($frase);
 
  echo "Recebi R$ " . (salario());
 ```
+
+### 032 Parâmetros de funções
 
 - https://secure.php.net/manual/pt_BR/functions.arguments.php
 
@@ -513,10 +517,143 @@ function ola(){
 var_dump(ola("Bom dia", 10));
 ```
 
+### 033 Parâmetros por Valor x por Referência
 
+```php
+<?php
+$a = 10;
+function trocaValor(&$a){ //Passagem de parâmetro por referência (&$a)
+//function trocaValor($a){
+    $a += 50;
+    return $a;
+}
+echo trocaValor($a); // 60
+echo "<br>";
+echo $a; // 10 ($a)
+echo $a; // 60 (&$a)
+```
 
+```php
+<?php
+$pessoa = array('nome' =>'José', 'idade' => 20);
 
+foreach ($pessoa as &$value){
+    if(gettype($value) === 'integer') $value += 10;
 
+    echo $value . '<br>';
+}
+print_r($pessoa);
+```
+
+### 034 Funções no PHP 7 Novidades
+
+```php
+<?php
+function soma(int ...$valores){
+    return array_sum($valores);
+}
+echo soma(2,2);
+echo '<br>';
+echo soma(25,25);
+echo '<br>';
+echo soma(2.2,2.5);
+echo '<br>';
+```
+
+```php
+<?php
+function soma(float ...$valores):string {
+    return array_sum($valores);
+}
+echo var_dump(soma(2,2));
+echo '<br>';
+echo soma(25,25);
+echo '<br>';
+echo soma(2.2,2.5);
+echo '<br>';
+```
+
+### 035 Funções Recursivas
+
+```php
+<?php
+
+$hierarquia = array(
+    array(
+        'nome_cargo'=>'CEO',
+        'subordinados'=>array(
+            array(
+                'nome_cargo'=>'Direto Comercial',
+                'subordinados', array(
+                    array(
+                        'nome_cargo'=>'Gerente de vendas'
+                    )
+                )
+            ),
+            array(
+                'nome_cargo'=>'Diretor Financeiro',
+                'subordinados' => array(
+                    array('nome_cargo'=>'supervisode de Pagamentos'
+                    )
+                )
+            ),
+            array(
+                'nome_cargo'=>'gerente de compras',
+                'subordinados' => array(
+                    array(
+                        'nome_cargo'=> 'Supervisor de suprimentos'
+                    )
+                )
+            )
+        )
+    )
+);
+
+function exibe($cargos){
+    $html = '<ul>';
+        foreach ($cargos as $cargo){
+            $html .= "<li>";
+                $html .= $cargo['nome_cargo'];
+                if(isset($cargo['subordinados']) && count($cargo['subordinados'])> 0){
+                    $html .= exibe($cargo['subordinados']);
+                }
+            $html .= "</li>";
+        }
+
+    $html .= '</ul>';
+    return $html;
+
+}
+echo exibe($hierarquia);
+```
+
+### 036 Funções Anônimas
+
+```php
+<?php
+
+function teste($callabck){
+    //processo lento...
+
+    $callabck();
+}
+
+teste(function(){
+    echo "TERMINOU!!";
+});
+```
+
+```php
+<?php
+
+$fn = function ($a){
+    var_dump($a);
+};
+
+$fn("OLá");
+
+//string(4) "OLá"
+```
 
 [Voltar ao Índice](#indice)
 
