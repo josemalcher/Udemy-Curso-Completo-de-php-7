@@ -720,6 +720,29 @@ echo $dt->format("d/m/Y H:i:s");
 
 ## <a name="parte9">09 Programação Orientada a Objetos - Introdução</a>
 
+#### 040 Conceitos de Programaçãoo Orientada a Objetos
+
+- http://php.net/manual/pt_BR/language.oop5.php
+- https://code.tutsplus.com/pt/tutorials/object-oriented-php-for-beginners--net-12762
+
+
+#### 041 Criando uma Classe
+
+```php
+<?php
+class Pessoa {
+    public $nome;
+    function falar() {
+        return "O meunome é ".$this->nome;
+    }
+}
+
+$jose = new Pessoa();
+$jose->nome = "Jose Malcher Jr.";
+echo $jose->falar();
+```
+
+
 
 [Voltar ao Índice](#indice)
 
