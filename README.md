@@ -896,6 +896,78 @@ echo $meuendereco;
 ?>
 ```
 
+#### 045 Encapsulamento
+
+```php
+<?php
+
+class Pessoa{
+    public $nome = "José";
+    protected $idade = 33;
+    private $senha = "123456";
+
+    public function verDados(){
+        echo $this->nome  . "<br/>";
+        echo $this->idade . "<br/>";
+        echo $this->senha . "<br >";
+    }
+}
+
+class Programador extends Pessoa{
+    public function verDados(){
+        echo "Classe: " . get_class($this) . "<br>";
+        echo $this->nome  . "<br/>";
+        echo $this->idade . "<br/>";
+        //echo $this->senha . "<br >";
+    }
+}
+
+$objeto = new Programador();
+//echo $objeto->senha;
+$objeto->verDados();
+```
+
+#### 046 Herança
+
+```php
+<?php
+
+class Documento{
+    private $numero;
+
+    public function getNumero()
+    {
+        return $this->numero;
+    }
+
+    public function setNumero($numero): void
+    {
+        $this->numero = $numero;
+    }
+}
+
+class CPF extends Documento{
+    public function validar(): bool{
+        $numeroCPF = $this->getNumero();
+        //VALIDAÇÃO DO CPF
+        return true;
+    }
+}
+
+$doc = new CPF();
+$doc->setNumero("12312312312");
+var_dump($doc->validar());
+echo "<br>";
+echo $doc->getNumero();
+
+```
+
+#### 047 Interface
+
+
+
+
+
 [Voltar ao Índice](#indice)
 
 ---
