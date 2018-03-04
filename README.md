@@ -996,7 +996,130 @@ $carro->trocarMarcha(1);
 #### 048 Classe Abstrata
 
 ```php
+<?php
 
+interface Veiculo{
+    public function acelerar($velocidade);
+    public function frenar($velocidade);
+    public function trocarMarcha($marcha);
+}
+abstract class Automovel implements Veiculo{
+    public function acelerar($velocidade)
+    {
+        echo "O veículo acelerou até " . $velocidade . " km/h";
+    }
+    public function frenar($velocidade)
+    {
+        echo "O veiculo frenou até " . $velocidade . " KM/h";
+    }
+    public function trocarMarcha($marcha)
+    {
+        echo "O veículo engatou a marcha " . $marcha;
+    }
+}
+class DelRey extends Automovel{
+    public function empurrar(){
+    }
+}
+//$carro = new Automovel(); // não rola!
+$carro = new DelRey();
+$carro->acelerar(50);
+$carro->empurrar();
+```
+
+#### 049 Polimorfismo
+```php
+<?php
+abstract class Animal{
+    public function falar(){
+        return "Som";
+    }
+    public function mover(){
+        return "Anda";
+    }
+}
+class Cachorro extends Animal{
+    public function falar(){
+        return "Late";
+    }
+}
+class Gato extends Animal{
+    public function falar(){
+        return "Mia";
+    }
+}
+class Passaro extends Animal{
+    public function falar(){
+        return "Canta";
+    }
+    public function mover()
+    {
+        return "Voa e " . parent::mover();
+    }
+}
+$pluto = new Cachorro();
+echo $pluto->falar() . "<br>";
+echo $pluto->mover() . "<br>";
+echo "----------------- <br>";
+$garfield = new Gato();
+echo $garfield->falar() . "<br>";
+echo $garfield->mover() . "<br>";
+echo "----------------- <br>";
+$bird = new Passaro();
+echo $bird->falar() . "<br>";
+echo $bird->mover() . "<br>";
+```
+
+#### 050 Incluindo classes com Autoload
+
+```php
+<?php
+
+/*function __autoload($nomedaClasse){
+    require_once ("$nomedaClasse.php");
+}*/
+
+function incluirClasses($nomeClasse){
+    if(file_exists($nomeClasse.".php")===true){
+        require_once ($nomeClasse.".php");
+    }
+}
+spl_autoload_register("incluirClasses");
+spl_autoload_register(function ($nomeClasse){
+    if(file_exists("NomePastaDaClasses".DIRECTORY_SEPARATOR.$nomeClasse.".php")===true){
+        require_once ("NomePastaDaClasses".DIRECTORY_SEPARATOR.$nomeClasse.".php");
+    }
+});
+
+$carro = new DelRey();
+echo $carro->acelerar(200);
+```
+
+#### 051 Usando Namespace
+
+##### 09-poo/class/Cliente/Cadastro.php
+```php
+<?php
+namespace Cliente;
+class Cadastro extends \Cadastro {
+    public function registraVenda(){
+        echo "foi registrada uma venda para o cliente " . $this->getNome();
+    }
+}
+```
+##### 09-poo/ex11-Index.php
+```php
+<?php
+
+require_once ("config.php");
+
+use Cliente\Cadastro;
+$cad = new Cadastro();
+$cad->setNome("Jose");
+$cad->setEmail("jose@jose.com");
+$cad->setSenha("123456");
+
+echo $cad->registraVenda();
 ```
 
 
