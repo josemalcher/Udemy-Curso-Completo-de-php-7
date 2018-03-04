@@ -959,13 +959,45 @@ $doc->setNumero("12312312312");
 var_dump($doc->validar());
 echo "<br>";
 echo $doc->getNumero();
-
 ```
 
 #### 047 Interface
+```php
+<?php
 
+interface Veiculo{
+    public function acelerar($velocidade);
+    public function frenar($velocidade);
+    public function trocarMarcha($marcha);
+}
 
+class Civic implements Veiculo{
+    public function acelerar($velocidade)
+    {
+        echo "O veículo acelerou até " . $velocidade . " km/h";
+    }
 
+    public function frenar($velocidade)
+    {
+        echo "O veiculo frenou até " . $velocidade . " KM/h";
+    }
+
+    public function trocarMarcha($marcha)
+    {
+        echo "O veículo engatou a marcha " . $marcha;
+    }
+
+}
+
+$carro = new Civic();
+$carro->trocarMarcha(1);
+```
+
+#### 048 Classe Abstrata
+
+```php
+
+```
 
 
 [Voltar ao Índice](#indice)
