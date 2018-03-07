@@ -1192,6 +1192,42 @@ echo json_encode($data);
 
 ## <a name="parte12">12 Banco de Dados - PDO</a>
 
+#### 055 Conectando o PHP 7 com MySQL usando PDO
+```php
+ <?php
+ 
+ $conn = new PDO("mysql:dbname=cursophp7;host=localhost", "root", "");
+ $stmt = $conn->prepare("SELECT * FROM tb_usuarios ORDER BY login");
+ $stmt->execute();
+ 
+ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+ //var_dump($result);
+ 
+ foreach ($result as $row) {
+     foreach ($row as $key => $value){
+         echo "<strong>".$key."</strong>". $value . "<br/>";
+     }
+     echo "=================================================<br/>";
+ }
+```
+
+#### 058 PDO Inserindo dados no banco
+```php
+<?php
+$conn = new PDO("mysql:dbname=cursophp7;host=localhost", "root", "");
+
+$stmt = $conn->prepare("INSERT INTO tb_usuarios(login, senha, cadastro) VALUES (:LOGIN, :SENHA, CURRENT_DATE )");
+$login = "josemalcher";
+$senha = "123456";
+
+$stmt->bindParam(":LOGIN", $login);
+$stmt->bindParam(":SENHA", $senha);
+
+$stmt->execute();
+
+echo "Inserido ok";
+```
+
 
 [Voltar ao Índice](#indice)
 
