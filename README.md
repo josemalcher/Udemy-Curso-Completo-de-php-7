@@ -1129,6 +1129,7 @@ echo $cad->registraVenda();
 
 ## <a name="parte10">10 Banco de Dados - Preparando o Ambiente</a>
 
+- https://dev.mysql.com/downloads/workbench/
 
 [Voltar ao Índice](#indice)
 
@@ -1136,6 +1137,54 @@ echo $cad->registraVenda();
 
 ## <a name="parte11">11 Banco de Dados - MySQLi</a>
 
+#### 054 Classe MySQLi e o PHP 7
+
+```php
+<?php
+
+$conn = new mysqli("localhost", "root", "","cursophp7");
+if($conn->connect_error){
+    echo "Erro: " . $conn->connect_error;
+}
+
+$stmt = $conn->prepare("INSERT INTO tb_usuarios (login, senha) VALUES (?,?)");
+
+$stmt->bind_param("ss", $login, $senha); //  String String (ss)
+
+$login="jose2";
+$senha="1234567";
+$stmt->execute();
+
+$login="jose3";
+$senha="1234568";
+
+$stmt->execute();
+
+```
+
+```php
+<?php
+
+$conn = new mysqli("localhost", "root", "","cursophp7");
+if($conn->connect_error){
+    echo "Erro: " . $conn->connect_error;
+}
+
+$result = $conn->query("SELECT * FROM tb_usuarios ORDER BY login");
+
+$data = array();
+//while($row = $result->fetch_array()){
+while($row = $result->fetch_assoc()){
+
+    array_push($data,$row);
+    //var_dump($row);
+
+}
+
+echo json_encode($data);
+
+
+```
 
 [Voltar ao Índice](#indice)
 
