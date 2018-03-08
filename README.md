@@ -1288,6 +1288,68 @@ echo "DELETE ok!";
 
 ## <a name="parte13">13 Banco de Dados - Data Access Object e PDO</a>
 
+#### 062 PDO - DAO
+- 13-Data-Access-Object-PDO/config.php
+```php
+<?php
+spl_autoload_register(function ($class_name){
+   $filename = $class_name.".php";
+   if(file_exists(($filename))){
+       require_once ($filename);
+   }
+});
+```
+- 13-Data-Access-Object-PDO/Sql.php
+```php
+<?php
+
+class Sql extends PDO
+{
+    private $conn;
+
+    public function __construct()
+    {
+        $this->conn = new PDO("mysql:dbname=cursophp7;host=localhost", "root", "");
+    }
+
+    private function setParams($statment, $parameters = array())
+    {
+        foreach ($parameters as $key => $value) {
+            $this->setParam($key, $value);
+        }
+    }
+
+    private function setParam($statement, $key, $value)
+    {
+        $statement->bindParam($key, $value);
+    }
+
+    public function query($rawQuery, $params = array())
+    {
+        $stmt = $this->conn->prepare($rawQuery);
+        $this->setParams($stmt, $params);
+        $stmt->execute();
+        return $stmt;
+    }
+
+    public function select($rawQuery, $params = array()):array
+    {
+        $stmt = $this->query($rawQuery, $params);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+}
+```
+
+- 13-Data-Access-Object-PDO/index.php
+```php
+<?php
+require_once "config.php";
+
+$sql = new Sql();
+$usuarios = $sql->select("SELECT * FROM tb_usuarios");
+
+echo json_encode($usuarios);
+```
 
 [Voltar ao Índice](#indice)
 
