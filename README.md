@@ -1457,6 +1457,155 @@ echo $jose; //carrega tostring
 ### 064 PDO - DAO - LIST
 
 
+- 13-Data-Access-Object-PDO/class/Usuario.php
+```php
+<?php
+
+class Usuario
+{
+    private $idusuario;
+    private $deslogin;
+    private $dessenha;
+    private $dtcadastro;
+
+
+    public function getIdusuario()
+    {
+        return $this->idusuario;
+    }
+
+    public function setIdusuario($idusuario): void
+    {
+        $this->idusuario = $idusuario;
+    }
+
+    public function getDeslogin()
+    {
+        return $this->deslogin;
+    }
+
+    public function setDeslogin($deslogin): void
+    {
+        $this->deslogin = $deslogin;
+    }
+
+    public function getDessenha()
+    {
+        return $this->dessenha;
+    }
+
+    public function setDessenha($dessenha): void
+    {
+        $this->dessenha = $dessenha;
+    }
+
+    public function getDtcadastro()
+    {
+        return $this->dtcadastro;
+    }
+
+    public function setDtcadastro($dtcadastro): void
+    {
+        $this->dtcadastro = $dtcadastro;
+    }
+
+    /* ---  Métodos  ---- */
+    public function loadById($id)
+    {
+        $sql = new Sql();
+        $results = $sql->select("SELECT * FROM tb_usuarios WHERE id_usuario = :ID", array(":ID" => $id));
+
+        //if(isset($result[0]) > 0){
+        if (count($results) > 0) {
+            $row = $results[0];
+            $this->setIdusuario($row['id_usuario']);
+            $this->setDeslogin($row['login']);
+            $this->setDessenha($row['senha']);
+            $this->setDtcadastro(new DateTime($row['cadastro']));
+
+        }
+    }
+
+    public static function getList()
+    {
+        $sql = new SQL();
+        return $sql->select("SELECT * FROM tb_usuarios ORDER BY login");
+    }
+
+    public static function search($login)
+    {
+        $sql = new SQL();
+        return $sql->select("SELECT * FROM tb_usuarios WHERE login LIKE :SEARCH ORDER BY login", array(':SEARCH' => "%" . $login . "%"));
+    }
+
+    public function login($login, $senha)
+    {
+        $sql = new SQL();
+        $result = $sql->select("SELECT * FROM tb_usuarios WHERE login = :LOGIN AND senha = :SENHA", array(
+            ":LOGIN" => $login,
+            ":SENHA" => $senha
+        ));
+        if(count($result) > 0){
+            $row = $result[0];
+            $this->setIdusuario($row['id_usuario']);
+            $this->setDeslogin($row['login']);
+            $this->setDessenha($row['senha']);
+            $this->setDtcadastro(new DateTime($row['cadastro']));
+        }else{
+            throw new Exception("Login e/ou senha inválidos");
+        }
+    }
+
+
+    public function __toString()
+    {
+        return json_encode(array(
+            "id_usuario" => $this->getIdusuario(),
+            "login" => $this->getDeslogin(),
+            "senha" => $this->getDessenha(),
+            "cadastro" => $this->getDtcadastro()->format('d/m/Y'),
+        ));
+    }
+
+
+}
+```
+
+- 13-Data-Access-Object-PDO/index.php
+```php
+<?php
+require_once "config.php";
+/*
+$sql = new Sql();
+$usuarios = $sql->select("SELECT * FROM tb_usuarios");
+echo json_encode($usuario);
+*/
+
+/* Carrega um usuário
+$jose = new Usuario();
+$jose->loadById(2);
+echo $jose;
+*/
+
+/*
+//Carrega [[]]uma lista de usuparios
+$lista = Usuario::getList();
+echo json_encode($lista);
+*/
+
+/*
+//Carrega uma lista de usuários buscando pelo login
+$busca = Usuario::search("mari");
+echo json_encode($busca);
+*/
+
+//Carrega um usuario com login e senha
+$usuario = new Usuario();
+$usuario->login("jose","123457");
+echo $usuario;
+```
+
+
 
 [Voltar ao Índice](#indice)
 
