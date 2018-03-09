@@ -69,7 +69,7 @@ Curso de controle de versão com Git - http://dev.rbtech.info/curso-controle-ver
 
 ## <a name="parte3">03 Conhecendo a Linguagem PHP</a>
 
-#### Básico 
+-  Básico 
 
 - http://php.net/manual/pt_BR/language.variables.basics.php
 ```php
@@ -720,13 +720,13 @@ echo $dt->format("d/m/Y H:i:s");
 
 ## <a name="parte9">09 Programação Orientada a Objetos - Introdução</a>
 
-#### 040 Conceitos de Programaçãoo Orientada a Objetos
+-  040 Conceitos de Programaçãoo Orientada a Objetos
 
 - http://php.net/manual/pt_BR/language.oop5.php
 - https://code.tutsplus.com/pt/tutorials/object-oriented-php-for-beginners--net-12762
 
 
-#### 041 Criando uma Classe
+-  041 Criando uma Classe
 
 ```php
 <?php
@@ -742,7 +742,7 @@ $jose->nome = "Jose Malcher Jr.";
 echo $jose->falar();
 ```
 
-#### 042 Atributos e Métodos
+-  042 Atributos e Métodos
 
 ```php
 <?php
@@ -788,7 +788,7 @@ $gol->setAno("1999");
 var_dump($gol->exibir());
 ```
 
-#### 043 Métodos Estáticos
+-  043 Métodos Estáticos
 
 ```php
 <?php
@@ -862,7 +862,7 @@ class Documento
 var_dump(Documento::validarCPF("123456798"));
 ```
 
-#### 044 Métodos Mágicos
+-  044 Métodos Mágicos
 
 ```php
 <?php
@@ -896,7 +896,7 @@ echo $meuendereco;
 ?>
 ```
 
-#### 045 Encapsulamento
+-  045 Encapsulamento
 
 ```php
 <?php
@@ -927,7 +927,7 @@ $objeto = new Programador();
 $objeto->verDados();
 ```
 
-#### 046 Herança
+-  046 Herança
 
 ```php
 <?php
@@ -961,7 +961,7 @@ echo "<br>";
 echo $doc->getNumero();
 ```
 
-#### 047 Interface
+-  047 Interface
 ```php
 <?php
 
@@ -993,7 +993,7 @@ $carro = new Civic();
 $carro->trocarMarcha(1);
 ```
 
-#### 048 Classe Abstrata
+-  048 Classe Abstrata
 
 ```php
 <?php
@@ -1027,7 +1027,7 @@ $carro->acelerar(50);
 $carro->empurrar();
 ```
 
-#### 049 Polimorfismo
+-  049 Polimorfismo
 ```php
 <?php
 abstract class Animal{
@@ -1070,7 +1070,7 @@ echo $bird->falar() . "<br>";
 echo $bird->mover() . "<br>";
 ```
 
-#### 050 Incluindo classes com Autoload
+-  050 Incluindo classes com Autoload
 
 ```php
 <?php
@@ -1095,9 +1095,9 @@ $carro = new DelRey();
 echo $carro->acelerar(200);
 ```
 
-#### 051 Usando Namespace
+-  051 Usando Namespace
 
-##### 09-poo/class/Cliente/Cadastro.php
+- # 09-poo/class/Cliente/Cadastro.php
 ```php
 <?php
 namespace Cliente;
@@ -1107,7 +1107,7 @@ class Cadastro extends \Cadastro {
     }
 }
 ```
-##### 09-poo/ex11-Index.php
+- # 09-poo/ex11-Index.php
 ```php
 <?php
 
@@ -1137,7 +1137,7 @@ echo $cad->registraVenda();
 
 ## <a name="parte11">11 Banco de Dados - MySQLi</a>
 
-#### 054 Classe MySQLi e o PHP 7
+-  054 Classe MySQLi e o PHP 7
 
 ```php
 <?php
@@ -1192,7 +1192,7 @@ echo json_encode($data);
 
 ## <a name="parte12">12 Banco de Dados - PDO</a>
 
-#### 055 Conectando o PHP 7 com MySQL usando PDO
+-  055 Conectando o PHP 7 com MySQL usando PDO
 ```php
  <?php
  
@@ -1211,7 +1211,7 @@ echo json_encode($data);
  }
 ```
 
-#### 058 PDO Inserindo dados no banco
+-  058 PDO Inserindo dados no banco
 ```php
 <?php
 $conn = new PDO("mysql:dbname=cursophp7;host=localhost", "root", "");
@@ -1228,7 +1228,7 @@ $stmt->execute();
 echo "Inserido ok";
 ```
 
-#### 059 PDO - Alterando dados no banco
+-  059 PDO - Alterando dados no banco
 
 ```php
 <?php
@@ -1249,7 +1249,7 @@ echo "Alterado ok!";
 
 ```
 
-#### 060 PDO Apagando dados no banco
+-  060 PDO Apagando dados no banco
 ```php
 <?php
 $conn = new PDO("mysql:dbname=cursophp7;host=localhost", "root", "");
@@ -1264,7 +1264,7 @@ echo "DELETE ok!";
 
 ```
 
-#### 061 PDO Usando transações
+-  061 PDO Usando transações
 
 ```php
 <?php
@@ -1288,7 +1288,7 @@ echo "DELETE ok!";
 
 ## <a name="parte13">13 Banco de Dados - Data Access Object e PDO</a>
 
-#### 062 PDO - DAO
+-  062 PDO - DAO
 - 13-Data-Access-Object-PDO/config.php
 ```php
 <?php
@@ -1355,7 +1355,7 @@ echo json_encode($usuarios);
 
 ### 063 PDO - DAO - SELECT
 
-#### 13-Data-Access-Object-PDO/class/Usuario.php
+-  13-Data-Access-Object-PDO/class/Usuario.php
 ```php
 <?php
 
@@ -1436,7 +1436,7 @@ class Usuario
 }
 ```
 
-#### 13-Data-Access-Object-PDO/index.php
+-  13-Data-Access-Object-PDO/index.php
 ```php
 <?php
 require_once "config.php";
@@ -1450,9 +1450,12 @@ $jose = new Usuario();
 $jose->loadById(2);
 
 echo $jose; //carrega tostring
-
-
 ```
+
+---
+
+### 064 PDO - DAO - LIST
+
 
 
 [Voltar ao Índice](#indice)
