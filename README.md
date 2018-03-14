@@ -1688,6 +1688,31 @@ $usuario->update('luciana barbosa','789');
 echo $usuario;
 ```
 
+### 067 PDO - DAO - DELETE
+
+- 13-Data-Access-Object-PDO/class/Usuario.php
+```php
+public function delete()
+    {
+        $sql = new Sql();
+        $sql->query("DELETE FROM tb_usuarios WHERE id_usuario = :ID", array(
+            ':ID'=> $this->getIdusuario()
+        ));
+        $this->setIdusuario(0);
+        $this->setDeslogin('');
+        $this->setDessenha('');
+        $this->setDtcadastro(new DateTime());
+    }
+```
+
+- 13-Data-Access-Object-PDO/index.php
+```php
+// DELETE
+$usuario = new Usuario();
+$usuario->loadById(11);
+$usuario->delete();
+echo $usuario;
+```
 
 
 [Voltar ao Índice](#indice)

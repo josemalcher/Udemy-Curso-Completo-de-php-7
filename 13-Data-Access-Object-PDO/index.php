@@ -37,7 +37,13 @@ $usuario->insert();
 echo $usuario;*/
 
 // Update
-$usuario = new Usuario();
+/*$usuario = new Usuario();
 $usuario->loadById(6);
 $usuario->update('luciana barbosa','789');
+echo $usuario;*/
+
+// DELETE
+$usuario = new Usuario();
+$usuario->loadById(11);
+$usuario->delete();
 echo $usuario;
