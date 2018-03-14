@@ -1661,6 +1661,34 @@ $usuario->insert();
 echo $usuario;
 ```
 
+### 066 PDO - DAO - UPDATE
+
+- 13-Data-Access-Object-PDO/class/Usuario.php
+```php
+
+    public function update($login, $password){
+        $this->setDeslogin($login);
+        $this->setDessenha($password);
+        $sql = new Sql();
+        $sql->query("UPDATE tb_usuarios SET login = :LOGIN, senha = :PASSWORD WHERE id_usuario = :ID", array(
+           ':ID' => $this->getIdusuario(),
+           ':PASSWORD' => $this->getDessenha(),
+           ':LOGIN'=> $this->getDeslogin()
+        ));
+    }
+
+```
+
+- 13-Data-Access-Object-PDO/index.php
+```php
+// Update
+$usuario = new Usuario();
+$usuario->loadById(6);
+$usuario->update('luciana barbosa','789');
+echo $usuario;
+```
+
+
 
 [Voltar ao Índice](#indice)
 

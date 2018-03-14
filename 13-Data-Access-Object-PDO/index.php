@@ -30,8 +30,14 @@ $usuario->login("jose","123457");
 echo $usuario;*/
 
 // insert usuários
-$usuario = new Usuario("josemalcherLogin","987654");
+/*$usuario = new Usuario("josemalcherLogin","987654");
 //$usuario->setDeslogin("JoseLotin");
 //$usuario->setDessenha("123456789");
 $usuario->insert();
+echo $usuario;*/
+
+// Update
+$usuario = new Usuario();
+$usuario->loadById(6);
+$usuario->update('luciana barbosa','789');
 echo $usuario;
