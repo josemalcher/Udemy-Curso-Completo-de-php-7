@@ -1605,6 +1605,61 @@ $usuario->login("jose","123457");
 echo $usuario;
 ```
 
+### 065 PDO - DAO - INSERT
+
+- cursophp7.sp_usuario_insert
+```sql
+CREATE PROCEDURE sp_usuario_insert(IN plogin VARCHAR(64), IN psenha VARCHAR(255))
+  BEGIN
+
+    INSERT tb_usuarios(login, senha) VALUES (plogin, psenha);
+
+    SELECT * FROM tb_usuarios WHERE id_usuario = LAST_INSERT_ID();
+
+  END;
+```
+
+- 13-Data-Access-Object-PDO/class/Usuario.php
+```php
+
+    public function setData($data)
+    {
+        $this->setIdusuario($data['id_usuario']);
+        $this->setDeslogin($data['login']);
+        $this->setDessenha($data['senha']);
+        $this->setDtcadastro(new DateTime($data['cadastro']));
+    }
+
+    public function insert()
+    {
+        $sql = new Sql();
+        $result = $sql->select("CALL sp_usuario_insert(:LOGIN, :PASSWORD)", array(
+            ':LOGIN'    => $this->getDeslogin(),
+            ':PASSWORD' => $this->getDessenha()
+        ));
+
+        if(count($result) > 0){
+            $this->setData($result[0]);
+        }
+    }
+
+    public function __construct($login = '',$password='')
+    {
+        $this->setDeslogin($login);
+        $this->setDessenha($password);
+    }
+```
+
+- 13-Data-Access-Object-PDO/index.php
+
+```php
+// insert usuários
+$usuario = new Usuario("josemalcherLogin","987654");
+//$usuario->setDeslogin("JoseLotin");
+//$usuario->setDessenha("123456789");
+$usuario->insert();
+echo $usuario;
+```
 
 
 [Voltar ao Índice](#indice)
