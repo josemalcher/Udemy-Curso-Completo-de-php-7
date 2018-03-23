@@ -1763,7 +1763,54 @@ echo json_encode($data);
 
 ```
 
+#### 069 Criando arquivos com fopen
 
+- 14-ManipulandoArquivos/ex069-fopen.php
+
+```php
+<?php
+$file = fopen("log.txt", "a+"); //w+
+fwrite($file, date("Y-m-d H:i:s")."\r\n");
+fclose($file);
+
+echo "Arquivo Criado com sucesso";
+```
+
+- 14-ManipulandoArquivos/ex069-csv.php
+
+```php
+<?php
+require_once("config.php");
+$sql = new Sql();
+$usuarios = $sql->select("SELECT * FROM tb_usuarios ORDER BY login");
+
+//print_r($usuario);
+
+$headers = array();
+foreach ($usuarios[0] as $key => $value) {
+    array_push($headers, ucfirst($key));
+}
+
+$file = fopen("usuario.csv", "w+");
+fwrite($file, implode(",", $headers) . "\r\n");
+
+//dados
+foreach ($usuarios as $row) {
+    $data = array();
+    foreach ($row as $key => $value) {
+        array_push($data, $value);
+    }
+    fwrite($file, implode(",", $data) . "\r\n");
+}
+
+fclose($file);
+
+//print_r($headers);
+//echo implode(",", $headers);
+
+```
+
+#### 
 
 
 [Voltar ao Índice](#indice)
