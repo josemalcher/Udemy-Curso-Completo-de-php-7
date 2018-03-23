@@ -1721,6 +1721,50 @@ echo $usuario;
 
 ## <a name="parte14">14 Manipulando Arquivos</a>
 
+#### 068 Lendo e manipulando pastasdiretórios com PHP 7
+
+- 14-ManipulandoArquivos/ex068-lendo-mani-arquivos.php
+
+```php
+<?php
+
+$name = "img2";
+if(!is_dir($name)){
+    mkdir($name);
+    echo "Diretório criado com sucesso";
+
+}else{
+    //rmdir($name); // remover diretorio
+    echo "Ja existe o diretorio $name";
+}
+```
+- 14-ManipulandoArquivos/ex068-scandir.php
+
+```php
+<?php
+$imgs = scandir("img");
+//var_dump($img);
+
+$data = array();
+
+foreach ($imgs as $img){
+    if(!in_array($img,array(".",".."))){
+        $filename = "img".DIRECTORY_SEPARATOR.$img;
+        $info = pathinfo($filename);
+
+        $info['size'] = filesize($filename);
+        $info['modified'] = date("d/m/Y H:i:s", filemtime($filename));
+        $info['url'] = "http://localhost/workspace-Udemy-Curso-Completo-de-php-7/14-ManipulandoArquivos/".str_replace("\\","/",$filename);
+        //var_dump($info);
+        array_push($data, $info);
+    }
+}
+echo json_encode($data);
+
+```
+
+
+
 
 [Voltar ao Índice](#indice)
 
