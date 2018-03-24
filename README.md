@@ -1994,6 +1994,29 @@ $data = json_decode($response, true);
 print_r($data);
 ```
 
+#### 076 Usando Cookies
+
+- 14-ManipulandoArquivos/ex076-Usando-Cookies.php
+```php
+<?php
+
+$data = array("empresa" => "JoseMalcher.net" );
+
+setcookie("Nome_DO_COOKIE", json_encode($data), time() + 3600);
+
+echo "Criado!";
+```
+
+- 14-ManipulandoArquivos/ex076-Usando-Cookies-Existe.php
+```php
+<?php
+
+if(isset($_COOKIE["Nome_DO_COOKIE"])){
+    $obj = json_decode($_COOKIE["Nome_DO_COOKIE"]);
+    echo $obj->empresa;
+}
+```
+
 
 [Voltar ao Índice](#indice)
 
