@@ -2066,7 +2066,34 @@ try {
 }
 ```
 
-#### 
+#### 078 Tratando erros
+
+- 15-Tratando-Erros-com-Try-Catch/ex078-Tratando-erros.php
+```php
+<?php
+
+function error_handler($code, $message, $file, $line)
+{
+    echo json_encode(array(
+        'code' => $code,
+        'message' => $message,
+        'line' => $line,
+        'file'=> $file
+    ));
+}
+set_error_handler("error_handler");
+echo $total = 100/0;
+```
+
+- 15-Tratando-Erros-com-Try-Catch/ex078-Tratando-erros-notice.php
+
+```php
+<?php
+error_reporting(E_ALL & ~E_NOTICE);
+
+$nome = $_GET["nome"];
+echo $nome;
+```
 
 [Voltar ao Índice](#indice)
 
