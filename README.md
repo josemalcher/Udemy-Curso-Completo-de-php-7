@@ -2210,6 +2210,8 @@ imagedestroy($new_img);
 
 ## <a name="parte17">17 Gerando Boletos com o BoletoPHP</a>
 
+- https://boletophp.com.br/ 
+
 
 [Voltar ao Índice](#indice)
 
@@ -2217,6 +2219,9 @@ imagedestroy($new_img);
 
 ## <a name="parte18">18 Gerenciando dependências com Composer</a>
 
+- https://getcomposer.org
+
+- https://www.php-fig.org/
 
 [Voltar ao Índice](#indice)
 

@@ -1,0 +1,15 @@
+{
+    "name": "cursophp/composer",
+    "description": "Primeiro arquivo composer - Curso PHP 7",
+    "type": "project",
+    "authors": [
+        {
+            "name": "José Stélio R. Malcher Junior",
+            "email": "contato@josemalcher.net"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "monolog/monolog":"1.0.*"
+    }
+}
