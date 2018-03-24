@@ -2024,6 +2024,49 @@ if(isset($_COOKIE["Nome_DO_COOKIE"])){
 
 ## <a name="parte15">15 Tratando Erros com Try Catch</a>
 
+#### 077 Try e Catch
+
+- 15-Tratando-Erros-com-Try-Catch/ex077-Try-e-Catch.php
+
+```php
+<?php
+try {
+    throw new Exception("Houve um erro!! ", 400);
+} catch (Exception $e) {
+    echo json_encode(array(
+        "message" => $e->getMessage(),
+        "line"    => $e->getLine(),
+        "file"    => $e->getCode(),
+        "code"    => $e->getCode()
+    ));
+
+}
+```
+
+- 15-Tratando-Erros-com-Try-Catch/ex077-Try-e-Catch_emExecucao.php
+
+```php
+<?php
+
+function trataNome($name)
+{
+    if (!$name) {
+        throw new Exception("Nenhum nome foi informado! ", 1);
+    }
+    echo ucwords($name)."<br>";
+}
+
+try {
+    trataNome("josé malcher junior");
+    trataNome("");
+} catch (Exception $e) {
+    echo $e->getMessage();
+}finally{
+    echo "Executou o Finaly";
+}
+```
+
+#### 
 
 [Voltar ao Índice](#indice)
 
