@@ -1891,6 +1891,40 @@ $base64encode =  "data:". $mimetype . ";base64,".$base64;
 
 ```
 
+#### 072 Upload de arquivos com PHP 7
+
+- 14-ManipulandoArquivos/ex072-Upload.php
+
+```php
+<form method="POST" enctype="multipart/form-data">
+    <input type="file" name="fileUpload">
+    <button type="submit">ENVIAR</button>
+</form>
+
+<?php
+
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    $file = $_FILES["fileUpload"];
+    if ($file["error"]) {
+        throw new Exception("ERROR " . $file["error"]);
+    }
+    $dirUpload = "upload";
+
+    if (!is_dir($dirUpload)) {
+        mkdir($dirUpload);
+    }
+
+    if (move_uploaded_file($file["tmp_name"], $dirUpload . DIRECTORY_SEPARATOR . $file["name"])) {
+        echo "Upload realizado com sucesso";
+    } else {
+        throw new Exception("Não foi possível realizar o ulpload");
+    }
+}
+
+?>
+```
+
+####
 
 [Voltar ao Índice](#indice)
 
