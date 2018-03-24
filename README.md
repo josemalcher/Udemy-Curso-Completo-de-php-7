@@ -1842,6 +1842,54 @@ foreach (scandir("ex70") as $item) {
 echo "Arquivos Apagados";
 ```
 
+#### 071 Lendo conteúdo de arquivos
+
+- 14-ManipulandoArquivos/ex071-lendo-arquivos.php
+
+```php
+<?php
+$filename = "usuario.csv";
+
+if (file_exists($filename)) {
+    $file = fopen($filename, "r");
+
+    $headers = explode(",", fgets($file));
+    $data = array();
+
+    while ($row = fgets($file)) {
+        $rowData = explode(",",$row);
+        $linha = array();
+        for ($i = 0; $i < count($headers); $i++) {
+            $linha[$headers[$i]] = $rowData[$i];
+        }
+        array_push($data, $linha);
+    }
+    fclose($file);
+    echo json_encode($data);
+}
+
+```
+
+- 14-ManipulandoArquivos/ex071-lendo-arquivos-tipo.php
+
+```php
+<?php
+
+$filename = "img/gato-alien.jpg";
+
+$base64 = base64_encode(file_get_contents($filename));
+
+$fileinfo = new finfo(FILEINFO_MIME_TYPE);
+
+$mimetype = $fileinfo->file($filename);
+
+$base64encode =  "data:". $mimetype . ";base64,".$base64;
+?>
+
+<a href="<?=$base64encode?>">Link para imagem</a>
+<img src="<?=$base64encode?>" alt="">
+
+```
 
 
 [Voltar ao Índice](#indice)
