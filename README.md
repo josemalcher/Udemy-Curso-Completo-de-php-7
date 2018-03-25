@@ -2329,12 +2329,22 @@ while ($resultado = mysqli_fetch_object($exec)) {
 }
 ```
 
-#### 
+#### 091 Entendendo as permissões de pasta
 
--
+- https://canaltech.com.br/linux/entendendo-e-configurando-permissoes-de-arquivos-e-pastas-no-linux/
+- http://blog.alura.com.br/entendendo-as-permissoes-no-linux/
+
+- 23-Seguranca-no-PHP-7/ex091-Entendendo-permissoes-de-pasta.php
 
 ```php
+<?php
 
+$pasta = "arquivos";
+$permissao = "0775";
+
+if(!is_dir($pasta)) mkdir($pasta, $permissao);
+
+echo "Diretorio criado com sucesso";
 ```
 
 
