@@ -2249,6 +2249,10 @@ Usando o composer!
 
 ## <a name="parte21">21 Criando Diretórios Virtuais com o Apache</a>
 
+Ref: http://blog.alura.com.br/como-configurar-virtual-hosts-no-apache/
+
+
+
 
 [Voltar ao Índice](#indice)
 
@@ -2256,12 +2260,52 @@ Usando o composer!
 
 ## <a name="parte22">22 Slim Framework</a>
 
+- https://www.slimframework.com/docs/v2/
+
+- 22-Slim-Framework/index.php
+
+```php
+<?php
+require_once("vendor/autoload.php");
+
+$app = new \Slim\Slim();
+
+$app->get('/', function () {
+    echo "Home Page";
+});
+
+$app->get('/hello/:name', function ($name) {
+    echo "Hello, " . $name;
+});
+$app->run();
+```
 
 [Voltar ao Índice](#indice)
 
 ---
 
 ## <a name="parte23">23 Segurança no PHP 7</a>
+
+- http://php.net/manual/pt_BR/function.system.php
+- http://php.net/manual/pt_BR/function.exec.php
+
+- 23-Seguranca-no-PHP-7/ex089-Command-Injection.php
+
+```php
+<?php
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    $cmd = escapeshellcmd($_POST["cmd"]);
+    echo "<pre>";
+    $comando = system($cmd, $retorno);
+    echo "</pre>";
+}
+?>
+
+<form action="" method="post">
+    <input type="text" name="cmd">
+    <button type="submit">EXECUTAR</button>
+</form>
+```
 
 
 [Voltar ao Índice](#indice)
