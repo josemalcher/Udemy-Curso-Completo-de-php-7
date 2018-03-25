@@ -2229,6 +2229,9 @@ imagedestroy($new_img);
 
 ## <a name="parte19">19 Trabalhando com E-mails usando a classe PHPMailer</a>
 
+Usando o composer!
+
+->Pasta 19-Trabalhando-com-E-mails-usando-a-classe-PHPMailer
 
 [Voltar ao Índice](#indice)
 
