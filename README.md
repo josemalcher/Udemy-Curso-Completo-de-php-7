@@ -2383,12 +2383,21 @@ if ($recaptch["success"] === true) {
 }
 ```
 
+#### 093 Aula 94 - Defense in depth
+
 
 [Voltar ao Índice](#indice)
 
 ---
 
 ## <a name="parte24">24 Projeto E-Commerce Admin</a>
+
+- db
+- config iniciais
+
+* https://github.com/hcodebr/ecommerce
+
+PROJ parou em: 098 Classe Page para o Template | Devido a um probema com o carregamendo do composer/autoload.
 
 
 [Voltar ao Índice](#indice)
