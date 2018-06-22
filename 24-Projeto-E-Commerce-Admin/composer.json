@@ -1,5 +1,5 @@
 {
-    "name": "hcodebr/ecommerce",
+    "name": "josemalcher/ecommerce",
     "authors": [
         {
             "name": "José Malcher Jr.",
@@ -13,7 +13,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Hcode\\": "vendor\\hcodebr\\php-classes\\src"
+            "": "vendor\\hcodebr\\php-classes\\src"
         }
     }
 }
